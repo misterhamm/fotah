@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Slabo 27px', serif;
+    font-size: 10em;
+}
+
+.col-md-4 {
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none
+}
+
+.results {
+    margin-top: 8em;
+}
+
