@@ -41,6 +41,10 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
                 alert('error');
             });
             
+            /*$scope.showResults = false;*/
+            
+            document.getElementById(more).style.display = 'block'; //Why this no work?
+            
             $scope.keyword = "";
         }
         

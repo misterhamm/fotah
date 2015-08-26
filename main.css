@@ -14,6 +14,12 @@ h1 {
 
 .container {
     margin: 0 auto;
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
 }
 
 .col-md-4 {
@@ -31,42 +37,73 @@ ul {
 .image {
     width: auto;
     height: 350px;
+    border-radius: 0.5em 0.5em 0 0;
 }
 
 .desc {
     margin: 0 auto 2em auto;
     color: #faebd7;
     width: 350px;
+    background-color: rgba(0,0,0,0.7);
+    display: inline-block;
+    border-radius: 0 0 0.5em 0.5em;
 }
 
 .left {
     text-align: left;
     padding-left: 1em;
-    border-bottom-left-radius: 0.5em;
+
 }
 
 .right {
     text-align: right;
     padding-right: 1em;
-    border-bottom-right-radius: 0.5em;
+
 }
 
 .center {
-    text-align: center;
+    text-align: right;
 }
 
 .top-row {
     padding: 0;
     padding-top: 1em;
-    background-color: rgba(0,0,0,0.7);
 }
 
 .bottom-row {
     padding: 0;
-    margin-bottom: 2em;
-    background-color: rgba(0,0,0,0.7);
 }
 
 a {
     font-weight: bold;
+}
+
+.btn-success {
+    background-color: #6e2f4e;
+    border-color: #6e2f4e;
+    margin: 2em;
+}
+
+.btn-success:hover {
+    background-color: #7C435F;
+    border-color: #7C435F;
+}
+
+#more {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .center {
+        text-align: left;
+        padding-left: 1em;
+    }
+    .right .right {
+        text-align: left;
+        padding-left: 1em;
+    }
+}
+
+@media (max-width: 1999px) {
+ /* fix overlap */
 }
