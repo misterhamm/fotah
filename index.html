@@ -28,6 +28,12 @@
                     <div class="messages" ng-show="error">
                         <p>Sorry. {{ error }}.</p>
                     </div>
+                    <div class="messages" ng-show="invalid">
+                        <p>Sorry. Something went wrong. Please try another search</p>
+                    </div>
+                    <!--<div class="messages" ng-show="more">
+                        <p>We found {{ resultsLength }} more results for pictures tagged with "{{ keywordDisplay }}".</p>
+                    </div>-->
                 </div>
             </div>
         </div>

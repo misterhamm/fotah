@@ -14,8 +14,10 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
         $scope.searchInstagram = function(keyword, url) {
             
             $scope.error = false;
+            $scope.invalid = false;
             $scope.found = false;
             $scope.loading = true;
+            $scope.keyword = $scope.keyword.replace(/[\s]/g, '');
             $scope.keywordDisplay = $scope.keyword;
             
             if (url == undefined ) {
@@ -59,7 +61,8 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
             },
             
             function(results) {
-                alert('error');
+                $scope.loading = false;
+                $scope.invalid = true;
             });
             
             /*$scope.showResults = false;*/
@@ -73,13 +76,9 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
                 return false;
             }
             else {
-                $scope.searchInstagram(keyword);
-            }
-                
+                $scope.searchInstagram(keyword.replace(/[\s]/g, ''));
+            }      
         }
-        
-        
-            
         
 });
     
