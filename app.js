@@ -13,6 +13,8 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
         
         $scope.searchInstagram = function(keyword, url) {
             
+            $scope.error = false;
+            $scope.found = false;
             $scope.loading = true;
             $scope.keywordDisplay = $scope.keyword;
             
@@ -49,6 +51,7 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
                     }
                 }
                 else {
+                    $scope.loading = false;
                     $scope.error = true;
                     $scope.error = results.data.meta.error_message;
                     return false;
