@@ -12,6 +12,10 @@ h1 {
     font-size: 10em;
 }
 
+ul {
+    padding: 0;
+}
+
 .container {
     margin: 0 auto;
     padding: 0;
@@ -34,16 +38,24 @@ ul {
     margin-top: 6em;
 }
 
+.photo-list {
+    position: relative;
+}
+
+.photo-box {
+    width: 100%;
+}
+
 .image {
-    width: auto;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     border-radius: 0.5em 0.5em 0 0;
 }
 
 .desc {
     margin: 0 auto 2em auto;
     color: #faebd7;
-    width: 350px;
+    width: 100%;
     background-color: rgba(0,0,0,0.7);
     display: inline-block;
     border-radius: 0 0 0.5em 0.5em;
@@ -93,17 +105,9 @@ a {
     display: none;
 }
 
-@media (max-width: 991px) {
-    .center {
-        text-align: left;
-        padding-left: 1em;
-    }
-    .right .right {
-        text-align: left;
-        padding-left: 1em;
-    }
-}
-
-@media (max-width: 1999px) {
- /* fix overlap */
+.messages {
+    margin-top: 2em;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.5em;
 }

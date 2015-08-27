@@ -19,6 +19,15 @@
                         <input type="text" class="form-control" ng-model="keyword" ng-keypress="keyInput($event, keyword)">
                         <span class="input-group-btn"><button class="btn btn-default" ng-click="searchInstagram(keyword)"><i class="fa fa-camera-retro"></i> Search</button></span>
                     </div>
+                    <div class="messages" ng-show="loading">
+                        <p>Searching for pictures tagged with "{{ keywordDisplay }}".</p>
+                    </div>
+                    <div class="messages" ng-show="found">
+                        <p>We found {{ resultsLength }} results for pictures tagged with "{{ keywordDisplay }}".</p>
+                    </div>
+                    <div class="messages" ng-show="error">
+                        <p>Sorry. {{ error }}.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,21 +39,21 @@
         <div class="container">
             <div class="row">
                 <ul class="photo-ul">
-                    <li class="col-md-4 photo-list" ng-repeat="photo in photos"> <!-- Insert ng-repeat here -->
+                    <li class="col-md-4 col-xs-12 col-sm-6 photo-list" ng-repeat="photo in photos">
                         <div class="photo-box">
                             <a href="{{photo.link}}"><img src='{{photo.images.standard_resolution.url}}' class="image"/></a>
                             <div class="desc">
-                                <div class="col-md-12 top-row">
+                                <div class="col-xs-12 top-row">
                                     <p class="left">User: <a href="https://www.instagram.com/{{photo.user.username}}">{{photo.user.username}}</a></p>
                                     
                                 </div>
-                                <div class="col-md-4 bottom-row left">
-                                    <p class="left">Date: 12.20.82</p>
+                                <div class="col-xs-4 bottom-row left">
+                                    <p class="left">Posted At: {{ photo.created_time * 1000 | date:'h:mm' }}</p>
                                 </div>
-                                <div class="col-md-4 bottom-row center">
+                                <div class="col-xs-4 bottom-row center">
                                     <p>Filter: {{photo.filter}}</p>
                                 </div>
-                                <div class="col-md-4 bottom-row right">
+                                <div class="col-xs-4 bottom-row right">
                                     <p class="right">Likes: {{photo.likes.count}}</p>
                                 </div>
                             </div>
@@ -53,7 +62,7 @@
                 </ul>
             </div>
         </div>
-        <button ng-click="searchInstagram(keyword, moreResults)" class="btn btn-success btn-lg" id="more">More</button>
+        <button ng-click="searchInstagram(keyword, moreResults)" class="btn btn-success btn-lg" ng-show="more">More</button>
     </section>
 
 

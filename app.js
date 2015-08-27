@@ -1,4 +1,5 @@
 angular.module('fotah', ['ngMessages', 'ngAnimate'])
+
     
     .config(function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -9,8 +10,11 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);
         };    
-    
+        
         $scope.searchInstagram = function(keyword, url) {
+            
+            $scope.loading = true;
+            $scope.keywordDisplay = $scope.keyword;
             
             if (url == undefined ) {
                 var searchUrl = "https://api.instagram.com/v1/tags/" + keyword + "/media/recent";
@@ -26,6 +30,7 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
                 callback: 'JSON_CALLBACK'
             };
             
+            setTimeout(function() {
             $http({
                 method: 'JSONP',
                 url: searchUrl,
@@ -33,8 +38,21 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
             })
             
             .then(function(results) {
-                $scope.photos = results.data.data;
-                $scope.moreResults = results.data.pagination.next_url;
+                if (results.data.meta.code == 200) {
+                    $scope.photos = results.data.data;
+                    $scope.resultsLength = $scope.photos.length;
+                    if (results.data.pagination.next_url) {
+                        $scope.loading = false;
+                        $scope.more = true;
+                        $scope.found = true;
+                        $scope.moreResults = results.data.pagination.next_url;
+                    }
+                }
+                else {
+                    $scope.error = true;
+                    $scope.error = results.data.meta.error_message;
+                    return false;
+                }
             },
             
             function(results) {
@@ -43,11 +61,10 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
             
             /*$scope.showResults = false;*/
             
-            document.getElementById(more).style.display = 'block'; //Why this no work?
-            
             $scope.keyword = "";
+        }, 2000)
         }
-        
+            
         $scope.keyInput = function(enterKey, keyword) {
             if (enterKey.keyCode != 13) {
                 return false;
@@ -57,6 +74,7 @@ angular.module('fotah', ['ngMessages', 'ngAnimate'])
             }
                 
         }
+        
         
             
         
